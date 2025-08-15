@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Table, Booking
-from django.shortcuts import render
 from django.http import JsonResponse
 from datetime import datetime
 
@@ -24,7 +23,7 @@ def available_tables(date, time, guests):
         if seats_needed <= 0:
             return tables_allocated  # Enough tables found
     
-    return None  # Not enough tables
+    return None  # If not enough tables
 
 def make_booking(request):
     if request.method == 'POST':
@@ -37,7 +36,9 @@ def make_booking(request):
 
         allocated = available_tables(date, time, guests)
         if not allocated:
-            return JsonResponse({'error': 'No available tables'}, status=400)
+            return render(request, 'booking_form.html', {
+                'error': 'No available tables for this time. Pease choose another time.'
+                })
 
         booking = Booking.objects.create(
             name=name,
@@ -53,3 +54,4 @@ def make_booking(request):
         return JsonResponse({'success': 'Booking confirmed!'})
     
     return render(request, 'booking_form.html')
+
