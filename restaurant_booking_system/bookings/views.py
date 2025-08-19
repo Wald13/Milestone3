@@ -2,27 +2,21 @@ from django.shortcuts import render
 from .models import Table, Booking
 from datetime import datetime
 
-
 def available_tables(date, time, guests):
-    # Find tables already booked at the given date/time
     booked_tables = Booking.objects.filter(
         date=date,
         time=time
     ).values_list('tables', flat=True)
-
-    # Get available tables sorted by seat count
     available = Table.objects.exclude(id__in=booked_tables).order_by('seats')
-
+    
     seats_needed = guests
     tables_allocated = []
-
     for table in available:
         tables_allocated.append(table)
         seats_needed -= table.seats
         if seats_needed <= 0:
-            return tables_allocated  # Enough tables found
-    
-    return None  # If not enough tables
+            return tables_allocated
+    return None
 
 def make_booking(request):
     if request.method == 'POST':
@@ -34,9 +28,7 @@ def make_booking(request):
         guests = int(request.POST['guests'])
 
         # Validate date and time
-        booking_datetime = datetime.strptime(f"{date_str} {time_str}", '%Y-%m-%d %H:%M')
-
-        # Check if the booking is in the past
+        booking_datetime = datetime.strptime(f"{date} {time}", '%Y-%m-%d %H:%M')
         if booking_datetime < datetime.now():
             return render(request, 'booking_form.html', {
                 'error': 'Please choose a future date and time'
@@ -46,7 +38,7 @@ def make_booking(request):
         if not allocated:
             return render(request, 'booking_form.html', {
                 'error': 'No available tables for this time. Please choose another time.'
-                })
+            })
 
         booking = Booking.objects.create(
             name=name,
@@ -59,31 +51,29 @@ def make_booking(request):
         booking.tables.set(allocated)
         booking.save()
 
-
-        return render(request, 'Booking confirmed!', {
-            'success': f'Booking confirmed for {name}!'  
+        return render(request, 'booking_form.html', {
+            'success': f'Booking confirmed for {name}!'
         })
 
-        # Cancel the booking if needed functionality
-        def cancel_booking(request):
-            if request.method == 'Post':
-                email = request.POST['email']
-                phone = request.POST['phone']
-
-        # Find the booking to cancel
-                booking = Booking.objects.filter(email=email, phone=phone).first()
-
-            if not booking:
-                return render(request, 'cancel_booking.html', {
-                    'error': 'No booking found with the provided details.'
-                })
-            
-            booking.delete()
-            return render(request, 'cancel_booking.html', {
-                'success': 'Booking cancelled successfully.'
-            })
-
-      
-    return render(request, 'cancel_booking.html')
     return render(request, 'booking_form.html')
+
+
+def cancel_booking(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        phone = request.POST['phone']
+
+        booking = Booking.objects.filter(email=email, phone=phone).first()
+
+        if not booking:
+            return render(request, 'cancel_booking.html', {
+                'error': 'No booking found with the provided details.'
+            })
+        
+        booking.delete()
+        return render(request, 'cancel_booking.html', {
+            'success': 'Booking cancelled successfully.'
+        })
+
+    return render(request, 'cancel_booking.html')
 
