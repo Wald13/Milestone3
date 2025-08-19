@@ -39,7 +39,7 @@ def make_booking(request):
         # Check if the booking is in the past
         if booking_datetime < datetime.now():
             return render(request, 'booking_form.html', {
-                'error': 'Cannot book a table in the past.'
+                'error': 'Please choose a future date and time'
             })
 
         allocated = available_tables(date, time, guests)
@@ -59,9 +59,31 @@ def make_booking(request):
         booking.tables.set(allocated)
         booking.save()
 
+
         return render(request, 'Booking confirmed!', {
             'success': f'Booking confirmed for {name}!'  
         })
-    
+
+        # Cancel the booking if needed functionality
+        def cancel_booking(request):
+            if request.method == 'Post':
+                email = request.POST['email']
+                phone = request.POST['phone']
+
+        # Find the booking to cancel
+                booking = Booking.objects.filter(email=email, phone=phone).first()
+
+            if not booking:
+                return render(request, 'cancel_booking.html', {
+                    'error': 'No booking found with the provided details.'
+                })
+            
+            booking.delete()
+            return render(request, 'cancel_booking.html', {
+                'success': 'Booking cancelled successfully.'
+            })
+
+      
+    return render(request, 'cancel_booking.html')
     return render(request, 'booking_form.html')
 
