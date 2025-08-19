@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Table, Booking
+from datetime import datetime
 
 
 def available_tables(date, time, guests):
@@ -31,6 +32,15 @@ def make_booking(request):
         date = request.POST['date']
         time = request.POST['time']
         guests = int(request.POST['guests'])
+
+        # Validate date and time
+        booking_datetime = datetime.strptime(f"{date_str} {time_str}", '%Y-%m-%d %H:%M')
+
+        # Check if the booking is in the past
+        if booking_datetime < datetime.now():
+            return render(request, 'booking_form.html', {
+                'error': 'Cannot book a table in the past.'
+            })
 
         allocated = available_tables(date, time, guests)
         if not allocated:
