@@ -28,7 +28,7 @@ def make_booking(request):
         guests = int(request.POST['guests'])
 
         # Validate date and time
-        booking_datetime = datetime.strptime(f"{date} {time}", '%Y-%m-%d %H:%M')
+        booking_time = datetime.strptime(f"{date} {time}", '%Y-%m-%d %H:%M')
         if booking_time.minute % 15 !=0:
             return render(request, 'booking_form.html', {
                 'error': 'Please choose a future date and time'
