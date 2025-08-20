@@ -27,14 +27,22 @@ def make_booking(request):
         time = request.POST['time']
         guests = int(request.POST['guests'])
 
-        # Validate date and time
-        booking_time = datetime.strptime(f"{date} {time}", '%Y-%m-%d %H:%M')
-        if booking_time.minute % 15 !=0:
+         # Validate date and time
+        booking_datetime = datetime.strptime(f"{date} {time_str}", '%Y-%m-%d %H:%M')
+
+        # Check if the booking is in the past
+        if booking_datetime < datetime.now():
             return render(request, 'booking_form.html', {
-                'error': 'Please choose a future date and time'
+                'error': 'Please choose a future date and time.'
             })
 
-        allocated = available_tables(date, time, guests)
+        # Check if the minutes are in 15-minute intervals
+        if booking_datetime.minute % 15 != 0:
+            return render(request, 'booking_form.html', {
+                'error': 'Please select a time in 15-minute intervals (e.g., 12:00, 12:15, 12:30).'
+            })
+
+        allocated = available_tables(date, time_str, guests)
         if not allocated:
             return render(request, 'booking_form.html', {
                 'error': 'No available tables for this time. Please choose another time.'
