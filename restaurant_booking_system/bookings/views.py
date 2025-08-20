@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Table, Booking
 from datetime import datetime
+from datetime import time, timedelta, datetime
 
 def available_tables(date, time, guests):
     booked_tables = Booking.objects.filter(
@@ -85,3 +86,13 @@ def cancel_booking(request):
 
     return render(request, 'cancel_booking.html')
 
+
+def booking_form(request):
+    times = []
+    start = datetime.strptime("12:00", "%H:%M")
+    end = datetime.strptime("22:00", "%H:%M")
+    current = start
+    while current <= end:
+        times.append(current.strftime("%H:%M"))
+        current += timedelta(minutes=15)
+    return render(request, 'booking_form.html', {'times': times})

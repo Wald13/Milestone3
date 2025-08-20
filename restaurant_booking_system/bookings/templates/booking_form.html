@@ -32,13 +32,10 @@
 
             <label>Time:</label><br>
             <select name="time" required>
-                {% for hour in 12|to:22 %}
-                    <option value="{{ hour|format:"02" }}:00">{{ hour|format:"02" }}:00</option>
-                    <option value="{{ hour|format:"02" }}:15">{{ hour|format:"02" }}:15</option>
-                    <option value="{{ hour|format:"02" }}:30">{{ hour|format:"02" }}:30</option>
-                    <option value="{{ hour|format:"02" }}:45">{{ hour|format:"02" }}:45</option>
+                {% for t in times %}
+                    <option value="{{ t }}">{{ t }}</option>
                 {% endfor %}
-            </select>><br>
+            </select><br>
 
             <label>Guests:</label>
             <input type="number" name="guests" min="1" required><br>
