@@ -24,7 +24,7 @@ def make_booking(request):
         email = request.POST['email']
         phone = request.POST['phone']
         date = request.POST['date']
-        time = request.POST['time']
+        time_str = request.POST['time']
         guests = int(request.POST['guests'])
 
          # Validate date and time
