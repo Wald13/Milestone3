@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Table, Booking
-from datetime import datetime
-from datetime import time, timedelta, datetime
+from datetime import datetime, timedelta
 
+# Function to find available tables
 def available_tables(date, time, guests):
     booked_tables = Booking.objects.filter(
         date=date,
@@ -19,7 +19,17 @@ def available_tables(date, time, guests):
             return tables_allocated
     return None
 
+# Booking form view
 def make_booking(request):
+    # Generate 15-minute interval times from 12:00 to 22:00
+    times = []
+    start = datetime.strptime("12:00", "%H:%M")
+    end = datetime.strptime("22:00", "%H:%M")
+    current = start
+    while current <= end:
+        times.append(current.strftime("%H:%M"))
+        current += timedelta(minutes=15)
+
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
@@ -28,24 +38,27 @@ def make_booking(request):
         time_str = request.POST['time']
         guests = int(request.POST['guests'])
 
-         # Validate date and time
+        # Validate date and time
         booking_datetime = datetime.strptime(f"{date} {time_str}", '%Y-%m-%d %H:%M')
 
         # Check if the booking is in the past
         if booking_datetime < datetime.now():
             return render(request, 'booking_form.html', {
+                'times': times,
                 'error': 'Please choose a future date and time.'
             })
 
         # Check if the minutes are in 15-minute intervals
         if booking_datetime.minute % 15 != 0:
             return render(request, 'booking_form.html', {
+                'times': times,
                 'error': 'Please select a time in 15-minute intervals (e.g., 12:00, 12:15, 12:30).'
             })
 
         allocated = available_tables(date, time_str, guests)
         if not allocated:
             return render(request, 'booking_form.html', {
+                'times': times,
                 'error': 'No available tables for this time. Please choose another time.'
             })
 
@@ -54,19 +67,20 @@ def make_booking(request):
             email=email,
             phone=phone,
             date=date,
-            time=time,
+            time=time_str,
             guests=guests
         )
         booking.tables.set(allocated)
         booking.save()
 
         return render(request, 'booking_form.html', {
+            'times': times,
             'success': f'Booking confirmed for {name}!'
         })
 
-    return render(request, 'booking_form.html')
+    return render(request, 'booking_form.html', {'times': times})
 
-
+# Cancel booking view
 def cancel_booking(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -85,14 +99,3 @@ def cancel_booking(request):
         })
 
     return render(request, 'cancel_booking.html')
-
-
-def booking_form(request):
-    times = []
-    start = datetime.strptime("12:00", "%H:%M")
-    end = datetime.strptime("22:00", "%H:%M")
-    current = start
-    while current <= end:
-        times.append(current.strftime("%H:%M"))
-        current += timedelta(minutes=15)
-    return render(request, 'booking_form.html', {'times': times})

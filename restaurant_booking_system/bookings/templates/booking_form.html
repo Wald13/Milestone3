@@ -32,6 +32,7 @@
 
             <label>Time:</label><br>
             <select name="time" required>
+                <option value="" disabled selected>Select a time</option>
                 {% for t in times %}
                     <option value="{{ t }}">{{ t }}</option>
                 {% endfor %}
