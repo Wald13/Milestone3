@@ -29,7 +29,7 @@ def make_booking(request):
 
         # Validate date and time
         booking_datetime = datetime.strptime(f"{date} {time}", '%Y-%m-%d %H:%M')
-        if booking_datetime < datetime.now():
+        if booking_time.minute % 15 !=0:
             return render(request, 'booking_form.html', {
                 'error': 'Please choose a future date and time'
             })
