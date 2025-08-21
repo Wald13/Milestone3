@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title>Need to choose one!!!</title>
+    {% load static %}
+    <link rel="stylesheet"href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="hero">
+        <h1>🍴 Welcome "NEED TITLE"</h1>
+        <p>book a table</p>
+        <div class="buttons">
+            <a href="{% url 'make_booking' %}" class="btn">Book a Table</a>
+            <a href="#" class "btn btn="secondary">View Menu</a>
+        </div>
+    </div>
+</body>
+</html>

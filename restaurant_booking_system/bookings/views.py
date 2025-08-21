@@ -99,3 +99,8 @@ def cancel_booking(request):
         })
 
     return render(request, 'cancel_booking.html')
+
+
+# Homepage view
+def home(request):
+    return render(request, 'home.html')
