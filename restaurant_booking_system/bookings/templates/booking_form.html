@@ -1,52 +1,40 @@
-{%load static%}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Book a Table</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'bookings/styles.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h1>Make a Booking</h1>
+{% extends 'base.html' %}
 
-        {% if error %}
-            <p class="message error">{{ error }}</p>
-        {% endif %}
-        {% if success %}
-            <p class="message success">{{ success }}</p>
-        {% endif %}
+{% block title %}Make a Booking{% endblock %}
 
-        <form method="post" action="{% url 'make_booking' %}">
-        {% csrf_token %}
-            <label>Name:</label>
-            <input type="text" name="name" required><br>
+{% block content %}
+<h1>Book a Table</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required>
 
-            <label>Email:</label>
-            <input type="email" name="email" required><br>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
 
-            <label>Phone:</label>
-            <input type="text" name="phone" required><br>
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" id="phone" required>
 
-            <label>Date:</label>
-            <input type="date" name="date" required><br>
+    <label for="date">Date</label>
+    <input type="date" name="date" id="date" required>
 
-            <label>Time:</label><br>
-            <select name="time" required>
-                <option value="" disabled selected>Select a time</option>
-                {% for t in times %}
-                    <option value="{{ t }}">{{ t }}</option>
-                {% endfor %}
-            </select><br>
+    <label for="time">Time</label>
+    <select name="time" id="time">
+        {% for t in times %}
+            <option value="{{ t }}">{{ t }}</option>
+        {% endfor %}
+    </select>
 
-            <label>Guests:</label>
-            <input type="number" name="guests" min="1" required><br>
+    <label for="guests">Guests</label>
+    <input type="number" name="guests" id="guests" required min="1">
 
-            <button type="submit">Confirm Booking</button>
-        </form>
+    <button type="submit" class="confirm">Confirm Booking</button>
+</form>
 
-        <p style="text-align:center; margin-top:15px;">
-            <a href="{% url 'cancel_booking' %}">Cancel a Booking</a>
-        </p>
-    </div>
-</body>
-</html>
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+{% if success %}
+<p class="success">{{ success }}</p>
+{% endif %}
+{% endblock %}

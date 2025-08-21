@@ -1,30 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Restaurant Booking System</title>
-    <link rel="stylesheet" href="{% static 'bookings/css/style.css' %}">
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'menu' %}">Menu</a></li>
-            <li><a href="{% url 'make_booking' %}">Make a Booking</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-        </ul>
-    </nav>
+{% extends "base.html" %}
 
-<!-- Hero Section -->
-    <div class="hero">
-        <h1>Welcome to Our Restaurant</h1>
-        <p>Delicious food, cozy atmosphere, and easy online booking.</p>
-        <div class="buttons">
-            <a href="{% url 'menu' %}" class="btn">View Menu</a>
-            <a href="{% url 'make_booking' %}" class="btn btn-secondary">Book a Table</a>
-        </div>
+{% block title %}Home - Restaurant{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to Our Restaurant!</h1>
+    <p>Delicious food awaits you. Book your table now!</p>
+    <div class="buttons">
+        <a href="{% url 'make_booking' %}" class="btn">Make a Booking</a>
+        <a href="{% url 'menu' %}" class="btn btn-secondary">See Menu</a>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
