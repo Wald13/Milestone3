@@ -104,3 +104,9 @@ def cancel_booking(request):
 # Homepage view
 def home(request):
     return render(request, 'home.html')
+
+def menu(request):
+    return render(request, "menu.html")
+
+def contact(request):
+    return render(request, "contact.html")

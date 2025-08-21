@@ -1,18 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Need to choose one!!!</title>
-    {% load static %}
-    <link rel="stylesheet"href="{% static 'css/styles.css' %}">
+    <title>Restaurant Booking System</title>
+    <link rel="stylesheet" href="{% static 'bookings/css/style.css' %}">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'menu' %}">Menu</a></li>
+            <li><a href="{% url 'make_booking' %}">Make a Booking</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+    </nav>
+
+<!-- Hero Section -->
     <div class="hero">
-        <h1>🍴 Welcome "NEED TITLE"</h1>
-        <p>book a table</p>
+        <h1>Welcome to Our Restaurant</h1>
+        <p>Delicious food, cozy atmosphere, and easy online booking.</p>
         <div class="buttons">
-            <a href="{% url 'make_booking' %}" class="btn">Book a Table</a>
-            <a href="#" class "btn btn="secondary">View Menu</a>
+            <a href="{% url 'menu' %}" class="btn">View Menu</a>
+            <a href="{% url 'make_booking' %}" class="btn btn-secondary">Book a Table</a>
         </div>
     </div>
 </body>
