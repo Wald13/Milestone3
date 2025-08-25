@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'bookings/base.html' %}
 
 {% block title %}Home - Restaurant{% endblock %}
 
@@ -9,6 +9,8 @@
     <div class="buttons">
         <a href="{% url 'make_booking' %}" class="btn">Make a Booking</a>
         <a href="{% url 'menu' %}" class="btn btn-secondary">See Menu</a>
+        <a href="{% url 'cancel_booking' %}" class="btn btn-third">Cancel Booking</a>
+
     </div>
 </div>
 {% endblock %}

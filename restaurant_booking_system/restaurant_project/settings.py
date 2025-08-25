@@ -56,7 +56,7 @@ ROOT_URLCONF = 'restaurant_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'bookings' / 'templates'],  # Directory for templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'restaurant_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'restaurant_db',
-        'USER': 'wald',       # your PostgreSQL username
-        'PASSWORD': '13wald73', # your PostgreSQL password
+        'USER': 'wald',       #  PostgreSQL username
+        'PASSWORD': '13wald73', #  PostgreSQL password
         'HOST': 'localhost',
         'PORT': '5432',
     }

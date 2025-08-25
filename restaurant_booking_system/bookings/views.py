@@ -78,10 +78,12 @@ def make_booking(request):
             'success': f'Booking confirmed for {name}!'
         })
 
-    return render(request, 'booking_form.html', {'times': times})
+    return render(request, 'bookings/booking_form.html', {'times': times})
 
 # Cancel booking view
 def cancel_booking(request):
+    context = {}
+    
     if request.method == 'POST':
         email = request.POST['email']
         phone = request.POST['phone']
@@ -89,26 +91,22 @@ def cancel_booking(request):
         booking = Booking.objects.filter(email=email, phone=phone).first()
 
         if not booking:
-            return render(request, 'cancel_booking.html', {
-                'error': 'No booking found with the provided details.'
-            })
-        
-        booking.delete()
-        return render(request, 'cancel_booking.html', {
-            'success': 'Booking cancelled successfully.'
-        })
-
-    return render(request, 'cancel_booking.html')
+            context['error'] = 'No booking found with the provided details.'
+        else:
+            booking.delete()
+            context['success'] = 'Booking cancelled successfully.'
+    
+    return render(request, 'bookings/cancel_booking.html', context)
 
 
 # Homepage view
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'booking/home.html')
 
 
 def menu(request):
-    return render(request, "menu.html")  
+    return render(request, 'booking/menu.html')  
 
-    
+
 def contact(request):
-    return render(request, "contact.html")
+    return render(request, 'booking/contact.html')

@@ -1,6 +1,0 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Contact Us</h1>
-<p>Email: info@restaurant.com</p>
-<p>Phone: +123 456 789</p>
-{% endblock %}
