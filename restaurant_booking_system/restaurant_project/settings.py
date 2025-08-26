@@ -76,12 +76,13 @@ WSGI_APPLICATION = 'restaurant_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restaurant_db',
-        'USER': 'wald',       #  PostgreSQL username
-        'PASSWORD': '13wald73', #  PostgreSQL password
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  
+       # 'NAME': 'restaurant_db',
+       # 'USER': 'wald',       #  PostgreSQL username
+        #'PASSWORD': '13wald73', #  PostgreSQL password
+        #'HOST': 'localhost',
+        #'PORT': '5432',
     }
 }
 

@@ -101,12 +101,10 @@ def cancel_booking(request):
 
 # Homepage view
 def home(request):
-    return render(request, 'booking/home.html')
-
+    return render(request, 'bookings/home.html')
 
 def menu(request):
-    return render(request, 'booking/menu.html')  
-
+    return render(request, 'bookings/menu.html')  
 
 def contact(request):
-    return render(request, 'booking/contact.html')
+    return render(request, 'bookings/contact.html')
