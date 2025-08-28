@@ -556,10 +556,36 @@ html {
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+    grid-template-columns: 1fr 2fr 1fr; /* Left text | Center (2x2 images) | Right text*/
+    gap: 30px;
+    max-width: 1600px;
+    margin: 20px auto;
+    align-items: start;
+}
+
+.menu-text h3 {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    margin-bottom: 0;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.35);
+
+}
+
+.menu-text p {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.35);
+
+}
+
+.menu-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+    grid-template-rows: repeat(2, auto);   /* 2 rows */
     gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
 }
 
 .menu-item {
@@ -577,16 +603,44 @@ html {
 
 .menu-item img {
     width: 100%;
-    height: 250px;
+    height: 250px;  /* keep consistent */
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .menu-item h3 {
-    margin: 10px 0 5px;
+    margin: 0;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.35);
+
 }
 
 .menu-item p {
     padding: 0 10px 15px;
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================================================
+   Background Image Styles
+   ========================================================================== */
+
+.background-image-menu {
+    position: relative;
+    background-image: url("/static/bookings/Images/Steak.jpg"); /* Background image */
+    background-size: cover;     /* Makes the image cover entire box */
+    min-height: 100vh;               /* Height (almost full screen) */
+    padding: 40px;
+
+}
+
+.background-image-menu .menu-title,
+.background-image-menu .menu-text,
+.background-image-menu .menu-item {
+    color:#000000; /* ensures text is visible */
+    background-color: rgba(255, 255, 255, 0.25); /* makes text/images readable */
+    border-radius: 10px;
+    padding: 15px;
 }

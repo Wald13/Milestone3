@@ -4,28 +4,51 @@
 {% block title %}Menu - Restaurant{% endblock %}
 
 {% block content %}
-<h1 class="menu-title">Our Menu</h1>
-
-<div class="menu-grid">
-    <div class="menu-item">
-        <img src="{% static 'bookings/Images/dish1.jpg' %}" alt="Dish 1">
-        <h3>Dish 1</h3>
-        <p>Delicious starter to begin your meal.</p>
-    </div>
-    <div class="menu-item">
-        <img src="{% static 'bookings/Images/dish2.jpg' %}" alt="Dish 2">
-        <h3>Dish 2</h3>
-        <p>Perfectly cooked and full of flavor.</p>
-    </div>
-    <div class="menu-item">
-        <img src="{% static 'bookings/Images/dish3.jpg' %}" alt="Dish 3">
-        <h3>Dish 3</h3>
-        <p>One of our chef’s specialties.</p>
-    </div>
-    <div class="menu-item">
-        <img src="{% static 'bookings/Images/dish4.jpg' %}" alt="Dish 4">
-        <h3>Dish 4</h3>
-        <p>A sweet ending to your meal.</p>
+<div class="background-image-menu">
+    <h1 class="menu-title">Special of the Week</h1>
+    <div class="menu-grid">
+        <!-- Starters Section -->
+        <div class="menu-text">
+            <h3>Starters:</h3>
+            <p>-"Tēta" Clams with Garlic & Parsley- 9.50€ </p>
+            <p>-Portuguese Style Snails with Chili and Rosemary- 10€</p>
+            <p>-Mix Oysters- 2€(unit)</p>
+            <p>-Deep Fried Squid Rings- 12.50€</p>
+            <p>-Whole Lobster- 50€/per Kg</p>
+            <p>-Wild Beluga Caviar- 25€/100g</p>
+        </div>
+        <div class="menu-images">
+            <div class="menu-item">
+                <img src="{% static 'bookings/Images/Razorclams.JPG' %}" alt="Dish 1">
+                <h3>Razor Clams with Red Onions(15€)</h3>
+                <p>Starter Special</p>
+            </div>
+            <div class="menu-item">
+                <img src="{% static 'bookings/Images/Prawns.jpg' %}" alt="Dish 2">
+                <h3>Boiled Prawns(25€/Kg)</h3>
+                <p>2 People Sharing Starter</p>
+            </div>
+            <div class="menu-item">
+                <img src="{% static 'bookings/Images/Mixtapas.jpg' %}" alt="Dish 3">
+                <h3>Tapas Selections(50€)</h3>
+                <p>Great for Family Sharing</p>
+            </div>
+            <div class="menu-item">
+                <img src="{% static 'bookings/Images/Lamb&potatoes.jpg' %}" alt="Dish 4">
+                <h3>Roast Lamb with Dauphinoise Potatoes(22.50€)</h3>
+                <p>Meat Special</p>
+            </div>
+        </div>
+        <!-- Mains Section -->
+        <div class="menu-text">
+            <h3>Mains:</h3>
+            <p>-"Tēta" Cod Style with "Punch" Potatoes and Rustic Salad- 20€</p>
+            <p>-Atlantic Salmon with Chickpeas Salad and Basil Sauce- 22.50€</p>
+            <p>-Seafood Plater- 60€</p>
+            <p>-Wild Board Stew with carrots and Cabbage- 25€</p>
+            <p>-Rib-eye Steak with fries and Green Sauce- 30€</p>
+            <p>-Tomahawk Steak- 50€/Per Kg(For 2)</p>
+        </div>
     </div>
 </div>
 {% endblock %}
