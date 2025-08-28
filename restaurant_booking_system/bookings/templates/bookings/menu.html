@@ -1,8 +1,31 @@
 {% extends 'bookings/base.html' %}
+{% load static %}
 
-{% block title %}Menu{% endblock %}
+{% block title %}Menu - Restaurant{% endblock %}
 
 {% block content %}
-<h1>Our Menu</h1>
-<p>Coming soon...</p>
+<h1 class="menu-title">Our Menu</h1>
+
+<div class="menu-grid">
+    <div class="menu-item">
+        <img src="{% static 'bookings/Images/dish1.jpg' %}" alt="Dish 1">
+        <h3>Dish 1</h3>
+        <p>Delicious starter to begin your meal.</p>
+    </div>
+    <div class="menu-item">
+        <img src="{% static 'bookings/Images/dish2.jpg' %}" alt="Dish 2">
+        <h3>Dish 2</h3>
+        <p>Perfectly cooked and full of flavor.</p>
+    </div>
+    <div class="menu-item">
+        <img src="{% static 'bookings/Images/dish3.jpg' %}" alt="Dish 3">
+        <h3>Dish 3</h3>
+        <p>One of our chef’s specialties.</p>
+    </div>
+    <div class="menu-item">
+        <img src="{% static 'bookings/Images/dish4.jpg' %}" alt="Dish 4">
+        <h3>Dish 4</h3>
+        <p>A sweet ending to your meal.</p>
+    </div>
+</div>
 {% endblock %}

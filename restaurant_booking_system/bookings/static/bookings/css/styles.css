@@ -9,7 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, red 0%, blue 100%);
     min-height: 100vh;
 }
 
@@ -18,7 +18,7 @@ body {
    ========================================================================== */
 
 .navbar {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(249, 249, 250, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -59,7 +59,7 @@ body {
 }
 
 .nav-item {
-    color: #333;
+    color: #b80303;
     text-decoration: none;
     font-weight: 500;
     padding: 10px 15px;
@@ -96,7 +96,7 @@ body {
    ========================================================================== */
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 80px auto 0;
     padding: 20px;
     background: rgba(255, 255, 255, 0.95);
@@ -111,19 +111,29 @@ body {
    ========================================================================== */
 
 .hero {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
-    border-radius: 20px;
-    margin-bottom: 40px;
+    position: relative;
+    background-image: url("/static/bookings/Images/Barview.jpg");
+    background-size: cover;     /* Makes the image cover entire box */
+    background-position: center; /* Center the image */
+    height: 90vh;               /* Hero height (almost full screen) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    padding: 2rem;
+    border-radius: 10px;
 }
 
 .hero h1 {
+    color: blue;
     font-size: 3.5rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(248, 248, 250, 0.3);
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -133,6 +143,18 @@ body {
     opacity: 0.95;
     animation: fadeInUp 0.8s ease-out 0.2s both;
 }
+.hero-banner {
+    background: url("../Images/Barview.jpg") no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
 
 .buttons {
     display: flex;
@@ -520,4 +542,51 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #c0392b, #a93226);
+}
+/* ==========================================================================
+   Menu Grid Styles
+   ========================================================================== */
+
+
+.menu-title {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 2.5rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.menu-item h3 {
+    margin: 10px 0 5px;
+}
+
+.menu-item p {
+    padding: 0 10px 15px;
+    font-size: 0.9rem;
+    color: #555;
 }
