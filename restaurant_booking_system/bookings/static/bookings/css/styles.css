@@ -624,7 +624,7 @@ html {
 }
 
 /* ==========================================================================
-   Background Image Styles
+   Background Image Styles Menu Section
    ========================================================================== */
 
 .background-image-menu {
@@ -633,7 +633,6 @@ html {
     background-size: cover;     /* Makes the image cover entire box */
     min-height: 100vh;               /* Height (almost full screen) */
     padding: 40px;
-
 }
 
 .background-image-menu .menu-title,
@@ -643,4 +642,31 @@ html {
     background-color: rgba(255, 255, 255, 0.25); /* makes text/images readable */
     border-radius: 10px;
     padding: 15px;
+}
+
+/* ==========================================================================
+   Background Image Styles Bokking Form Section
+   ========================================================================== */
+
+   .background-image-booking {
+    background: url("../Images/Barview2.jpg") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+.booking-form h1 {
+    color:#000000; /* ensures text is visible */
+    background-color: rgba(255, 255, 255, 0.55); /* makes text/images readable */
+    border-radius: 10px;
+    padding: 15px;
+    text-decoration: underline;
+}
+.booking-form-container {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
 }
