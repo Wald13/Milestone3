@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from .models import Table, Booking
 from datetime import datetime, timedelta
 
@@ -38,47 +39,44 @@ def make_booking(request):
         time_str = request.POST['time']
         guests = int(request.POST['guests'])
 
-        # Validate date and time
-        booking_datetime = datetime.strptime(f"{date} {time_str}", '%Y-%m-%d %H:%M')
+        # Convert to Python datetime
+        booking_date = datetime.strptime(date, "%Y-%m-%d").date()
+        booking_time = datetime.strptime(time_str, "%H:%M").time()
 
-        # Check if the booking is in the past
-        if booking_datetime < datetime.now():
-            return render(request, 'bookings/booking_form.html', {
-                'times': times,
-                'error': 'Please choose a future date and time.'
-            })
+        # Assume booking lasts 2 hours
+        start_dt = datetime.combine(booking_date, booking_time)
+        end_dt = start_dt + timedelta(hours=2)
 
-        # Check if the minutes are in 15-minute intervals
-        if booking_datetime.minute % 15 != 0:
-            return render(request, 'bookings/booking_form.html', {
-                'times': times,
-                'error': 'Please select a time in 15-minute intervals (e.g., 12:00, 12:15, 12:30).'
-            })
+        # Find all tables that can fit the party size
+        candidate_tables = Table.objects.filter(seats__gte=guests)
 
-        allocated = available_tables(date, time_str, guests)
-        if not allocated:
-            return render(request, 'bookings/booking_form.html', {
-                'times': times,
-                'error': 'No available tables for this time. Please choose another time.'
-            })
+        # Exclude tables already booked in the same time slot
+        unavailable = Booking.objects.filter(
+            date=booking_date,
+            time__lt=end_dt.time()
+        ).exclude(time__gte=booking_time)
 
-        booking = Booking.objects.create(
-            name=name,
-            email=email,
-            phone=phone,
-            date=date,
-            time=time_str,
-            guests=guests
-        )
-        booking.tables.set(allocated)
-        booking.save()
+        taken_tables = Table.objects.filter(booking__in=unavailable).distinct()
+        free_tables = candidate_tables.exclude(id__in=taken_tables)
 
-        return render(request, 'bookings/booking_form.html', {
-            'times': times,
-            'success': f'Booking confirmed for {name}!'
-        })
+        if not free_tables.exists():
+            messages.error(request, "⚠️ Sorry, no tables available for that time and party size.")
+        else:
+            # Pick the first available table (or you could let user pick)
+            table = free_tables.first()
+            booking = Booking.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                date=booking_date,
+                time=booking_time,
+                guests=guests
+            )
+            booking.tables.add(table)
+            messages.success(request, f"✅ Your booking is confirmed at Table {table.number}!")
+            return redirect('home')
 
-    return render(request, 'bookings/booking_form.html', {'times': times})
+    return render(request, 'bookings/booking_form.html', {"times": times})
 
 # Cancel booking view
 def cancel_booking(request):
