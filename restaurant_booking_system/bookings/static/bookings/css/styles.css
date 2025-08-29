@@ -1,3 +1,7 @@
+/* ==========================================================================
+   Restaurant Booking System - Clean CSS (No Duplicates)
+   ========================================================================== */
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -9,7 +13,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, red 0%, blue 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
 }
 
@@ -58,6 +62,7 @@ body {
     gap: 30px;
 }
 
+/* Fixed Navigation Items - No Flickering */
 .nav-item {
     color: #b80303;
     text-decoration: none;
@@ -65,28 +70,14 @@ body {
     padding: 10px 15px;
     border-radius: 25px;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(231, 76, 60, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.nav-item:hover::before {
-    left: 100%;
+    background: transparent;
+    border: 2px solid transparent;
 }
 
 .nav-item:hover {
     background: #e74c3c;
     color: white;
+    border-color: #e74c3c;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
 }
@@ -99,7 +90,7 @@ body {
     max-width: 100%;
     margin: 80px auto 0;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -112,28 +103,33 @@ body {
 
 .hero {
     position: relative;
-    background-image: url("/static/bookings/Images/Barview.png");
-    background-size: cover;     /* Makes the image cover entire box */
-    background-position: center; /* Center the image */
-    height: 90vh;               /* Hero height (almost full screen) */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("/static/bookings/Images/Barview.jpg") center/cover;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    background: rgba(0, 0, 0, 0.5);
     padding: 2rem;
     border-radius: 10px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
-    color: blue;
+    color: white;
     font-size: 3.5rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(248, 248, 250, 0.3);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -143,18 +139,6 @@ body {
     opacity: 0.95;
     animation: fadeInUp 0.8s ease-out 0.2s both;
 }
-.hero-banner {
-    background: url("../Images/Barview.jpg") no-repeat center center/cover;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-}
-
 
 .buttons {
     display: flex;
@@ -183,21 +167,6 @@ body {
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
     position: relative;
     overflow: hidden;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.btn:hover::before {
-    left: 100%;
 }
 
 .btn:hover {
@@ -238,13 +207,14 @@ h1 {
 }
 
 form {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 label {
@@ -260,7 +230,8 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="number"],
-select {
+select,
+textarea {
     width: 100%;
     padding: 15px;
     margin-bottom: 25px;
@@ -268,7 +239,8 @@ select {
     border-radius: 10px;
     font-size: 1rem;
     transition: all 0.3s ease;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 input[type="text"]:focus,
@@ -276,11 +248,13 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="date"]:focus,
 input[type="number"]:focus,
-select:focus {
+select:focus,
+textarea:focus {
     outline: none;
     border-color: #e74c3c;
     box-shadow: 0 0 10px rgba(231, 76, 60, 0.2);
     transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 select {
@@ -291,6 +265,10 @@ select {
     background-repeat: no-repeat;
     background-size: 16px;
     padding-right: 40px;
+}
+
+textarea {
+    resize: vertical;
 }
 
 .confirm {
@@ -311,14 +289,14 @@ select {
 .confirm:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(46, 204, 113, 0.6);
-    background: linear-gradient(45deg, #2ecc71, #27ae60);
 }
 
 /* ==========================================================================
    Message Styles
    ========================================================================== */
 
-.error {
+.error,
+.message.error {
     background: linear-gradient(135deg, #e74c3c, #c0392b);
     color: white;
     padding: 15px 20px;
@@ -330,7 +308,8 @@ select {
     animation: shake 0.5s ease-in-out;
 }
 
-.success {
+.success,
+.message.success {
     background: linear-gradient(135deg, #27ae60, #2ecc71);
     color: white;
     padding: 15px 20px;
@@ -351,14 +330,126 @@ select {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.message.error {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: white;
+/* ==========================================================================
+   Menu Grid Styles
+   ========================================================================== */
+
+.menu-title {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 2.5rem;
+    color: #2c3e50;
 }
 
-.message.success {
-    background: linear-gradient(135deg, #27ae60, #2ecc71);
-    color: white;
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 30px;
+    max-width: 1600px;
+    margin: 20px auto;
+    align-items: start;
+}
+
+.menu-text h3 {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.menu-text p {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.menu-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+}
+
+.menu-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.menu-item h3 {
+    margin: 15px 0 10px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.menu-item p {
+    padding: 0 15px 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* ==========================================================================
+   Page-Specific Background Styles
+   ========================================================================== */
+
+/* Menu Page Background */
+.background-image-menu {
+    position: relative;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url("/static/bookings/Images/Steak.jpg") center/cover;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* Booking Form Background */
+.background-image-booking {
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url("/static/bookings/Images/Barview2.jpg") center/cover;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* Contact Form Background */
+.contact-form {
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url("/static/bookings/Images/Moonview.jpg") center/cover;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.contact-header h1,
+.booking-form h1 {
+    color: #2c3e50;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 /* ==========================================================================
@@ -421,16 +512,43 @@ p {
     }
 }
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Loading Animation
+   ========================================================================== */
+
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
 
 @media (max-width: 768px) {
     .nav-container {
-        padding: 0 15px;
+        padding: 15px;
         flex-direction: column;
         height: auto;
-        padding: 15px;
     }
     
     .nav-menu {
@@ -441,7 +559,7 @@ p {
     }
     
     .container {
-        margin-top: 120px;
+        margin-top: 140px;
         padding: 15px;
         border-radius: 15px;
     }
@@ -472,11 +590,21 @@ p {
     h1 {
         font-size: 2rem;
     }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .menu-images {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
     .hero {
-        padding: 40px 15px;
+        height: 60vh;
+        padding: 20px 15px;
     }
     
     .hero h1 {
@@ -494,46 +622,19 @@ p {
 }
 
 /* ==========================================================================
-   Special Effects and Enhancements
+   Scrollbar Styles
    ========================================================================== */
 
-/* Loading animation for form submissions */
-.loading {
-    position: relative;
-    pointer-events: none;
-}
-
-.loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin: -10px;
-    border: 2px solid transparent;
-    border-top: 2px solid white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(241, 241, 241, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -543,162 +644,4 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #c0392b, #a93226);
-}
-/* ==========================================================================
-   Menu Grid Styles
-   ========================================================================== */
-
-
-.menu-title {
-    text-align: center;
-    margin: 30px 0;
-    font-size: 2.5rem;
-}
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Left text | Center (2x2 images) | Right text*/
-    gap: 30px;
-    max-width: 1600px;
-    margin: 20px auto;
-    align-items: start;
-}
-
-.menu-text h3 {
-    font-size: 1.5rem;
-    text-decoration: underline;
-    margin-bottom: 0;
-    color: #000000;
-    background-color: rgba(255, 255, 255, 0.35);
-
-}
-
-.menu-text p {
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 0;
-    color: #000000;
-    background-color: rgba(255, 255, 255, 0.35);
-
-}
-
-.menu-images {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 images per row */
-    grid-template-rows: repeat(2, auto);   /* 2 rows */
-    gap: 20px;
-}
-
-.menu-item {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease;
-}
-
-.menu-item:hover {
-    transform: scale(1.05);
-}
-
-.menu-item img {
-    width: 100%;
-    height: 250px;  /* keep consistent */
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.menu-item h3 {
-    margin: 0;
-    font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.35);
-
-}
-
-.menu-item p {
-    padding: 0 10px 15px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #000000;
-    background-color: rgba(255, 255, 255, 0.35);
-}
-
-/* ==========================================================================
-   Background Image Styles Menu Section
-   ========================================================================== */
-
-.background-image-menu {
-    position: relative;
-    background-image: url("/static/bookings/Images/Steak.jpg"); /* Background image */
-    background-size: cover;     /* Makes the image cover entire box */
-    min-height: 100vh;               /* Height (almost full screen) */
-    padding: 40px;
-}
-
-.background-image-menu .menu-title,
-.background-image-menu .menu-text,
-.background-image-menu .menu-item {
-    color:#000000; /* ensures text is visible */
-    background-color: rgba(255, 255, 255, 0.25); /* makes text/images readable */
-    border-radius: 10px;
-    padding: 15px;
-}
-
-/* ==========================================================================
-   Background Image Styles Bokking Form Section
-   ========================================================================== */
-
-   .background-image-booking {
-    background: url("../Images/Barview2.jpg") no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: underline;
-}
-
-.booking-form h1 {
-    color:#000000; /* ensures text is visible */
-    background-color: rgba(255, 255, 255, 0.55); /* makes text/images readable */
-    border-radius: 10px;
-    padding: 15px;
-    text-decoration: underline;
-}
-
-/* ==========================================================================
-    Contact Form Styles Section
-   ========================================================================== */
-
-.contact-form {
-    background: url("../Images/Moonview.jpg") no-repeat center center/cover;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    text-decoration: underline;
-}
-.contact-header h1 {
-    border-radius: 10px;
-    padding: 15px;
-    text-decoration: underline;
-    text-align: center;
-}
-
-textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 25px;
-    border: 2px solid #ecf0f1;
-    border-radius: 10px;
-    font-size: 1rem;
-    background: #fff;
-    transition: all 0.3s ease;
-    resize: vertical;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-textarea:focus {
-    outline: none;
-    border-color: #e74c3c;
-    box-shadow: 0 0 10px rgba(231, 76, 60, 0.2);
-    transform: translateY(-2px);
 }
