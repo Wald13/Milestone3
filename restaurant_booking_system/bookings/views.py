@@ -7,7 +7,7 @@ def available_tables(date, time, guests):
     booked_tables = Booking.objects.filter(
         date=date,
         time=time
-    ).values_list('tables', flat=True)
+    ).values_list('tables__id', flat=True)
     available = Table.objects.exclude(id__in=booked_tables).order_by('seats')
     
     seats_needed = guests
@@ -43,21 +43,21 @@ def make_booking(request):
 
         # Check if the booking is in the past
         if booking_datetime < datetime.now():
-            return render(request, 'booking_form.html', {
+            return render(request, 'bookings/booking_form.html', {
                 'times': times,
                 'error': 'Please choose a future date and time.'
             })
 
         # Check if the minutes are in 15-minute intervals
         if booking_datetime.minute % 15 != 0:
-            return render(request, 'booking_form.html', {
+            return render(request, 'bookings/booking_form.html', {
                 'times': times,
                 'error': 'Please select a time in 15-minute intervals (e.g., 12:00, 12:15, 12:30).'
             })
 
         allocated = available_tables(date, time_str, guests)
         if not allocated:
-            return render(request, 'booking_form.html', {
+            return render(request, 'bookings/booking_form.html', {
                 'times': times,
                 'error': 'No available tables for this time. Please choose another time.'
             })
@@ -73,7 +73,7 @@ def make_booking(request):
         booking.tables.set(allocated)
         booking.save()
 
-        return render(request, 'booking_form.html', {
+        return render(request, 'bookings/booking_form.html', {
             'times': times,
             'success': f'Booking confirmed for {name}!'
         })
