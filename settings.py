@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-@vw@jilt(5gnn-ukqkb!+29d=rifq-$qb=uoefbi*f&ett=4^i
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        '.herokuapp.com', 
+        'Milestone3.herokuapp.com', '127.0.0.1', 'waldm',
 ]
 
 
@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'restaurant_project.urls'
