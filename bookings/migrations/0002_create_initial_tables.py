@@ -22,4 +22,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migration.RunPython(create_tables, reverse_create_tables),
     ]

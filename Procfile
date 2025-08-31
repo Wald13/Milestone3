@@ -1,2 +1,2 @@
-web: gunicorn restaurant_project.wsgi --log-file -
+web: gunicorn restaurant_booking_system.wsgi --log-file -
 release: python manage.py migrate

@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-@vw@jilt(5gnn-ukqkb!+29d=rifq-$qb=uoefbi*f&ett=4^i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        'Milestone3.herokuapp.com', '127.0.0.1', 'localhost',
+]
 
 
 # Application definition
@@ -49,9 +51,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'restaurant_project.urls'
+ROOT_URLCONF = 'restaurant_booking_system.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'restaurant_project.wsgi.application'
+WSGI_APPLICATION = 'restaurant_booking_system.wsgi.application'
 
 
 # Database
