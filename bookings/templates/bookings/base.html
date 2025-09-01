@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <a class="skip-link" href="#main">Skip to content</a>
-    <title>{% block title %}Restaurant{% endblock %}</title>
+    <title>{% block title %}Tēta Virtuve{% endblock %}</title>
     <meta name="description" content="Book your table at our amazing restaurant. Delicious food and great atmosphere await you.">
     
     <!-- Favicon -->
@@ -30,6 +30,16 @@
             </ul>
         </div>
     </nav>
+
+    {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
 
     <!-- Main content -->
     <div class="container">
