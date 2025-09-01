@@ -461,7 +461,7 @@ textarea {
 .background-image-booking {
     background: 
         linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-        url("/static/bookings/Images/Barview2.jpg") center/cover;
+        url("/static/bookings/Images/Barview2.webp") center/cover;
     min-height: 100vh;
     padding: 40px;
 }
