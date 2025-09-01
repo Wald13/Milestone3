@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Restaurant Booking System - Clean CSS (No Duplicates)
+   Restaurant Booking System CSS
    ========================================================================== */
 
 /* Reset and Base Styles */
@@ -62,7 +62,7 @@ body {
     gap: 30px;
 }
 
-/* Fixed Navigation Items - No Flickering */
+/* Fixed Navigation Items */
 .nav-item {
     color: #b80303;
     text-decoration: none;
