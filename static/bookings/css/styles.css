@@ -105,7 +105,7 @@ body {
     position: relative;
     background: 
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url("/static/bookings/Images/Barview.jpg") center/cover;
+        url("/static/bookings/Images/Barview.webp") center/cover;
     height: 90vh;
     display: flex;
     justify-content: center;
@@ -452,7 +452,7 @@ textarea {
     position: relative;
     background: 
         linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-        url("/static/bookings/Images/Steak.jpg") center/cover;
+        url("/static/bookings/Images/Steak.webp") center/cover;
     min-height: 100vh;
     padding: 40px;
 }
@@ -470,7 +470,7 @@ textarea {
 .contact-form {
     background: 
         linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-        url("/static/bookings/Images/Moonview.jpg") center/cover;
+        url("/static/bookings/Images/Moonview.webp") center/cover;
     min-height: 100vh;
     padding: 40px;
 }
