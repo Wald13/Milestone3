@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-@vw@jilt(5gnn-ukqkb!+29d=rifq-$qb=uoefbi*f&ett=4^i
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        'Milestone3.herokuapp.com', '127.0.0.1', 'localhost',
+        'milestone3-d43afd666373.herokuapp.com', '127.0.0.1', 'localhost',
 ]
 
 
