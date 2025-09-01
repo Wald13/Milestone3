@@ -5,7 +5,14 @@
 <div class="background-image-booking">
     <div class="booking-form">
          <h1>Book a Table:</h1>
-         <form method="POST">
+         <!-- Show error/success messages -->
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+        <div class="success">{{ success }}</div>
+        {% endif %}
+        <form method="POST">
             {% csrf_token %}
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" required>
