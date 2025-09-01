@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
+
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -70,6 +72,15 @@ TEMPLATES = [
         },
     },
 ]
+
+#  Message tags for styling
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'error',
+}
 
 WSGI_APPLICATION = 'restaurant_booking_system.wsgi.application'
 
