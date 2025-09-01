@@ -10,7 +10,14 @@ def create_tables(apps, schema_editor):
         {'number': 3, 'seats': 4},
         {'number': 4, 'seats': 6},
         {'number': 5, 'seats': 6},
-        {'number': 6, 'seats': 8},
+        {'number': 6, 'seats': 2},
+        {'number': 7, 'seats': 2},
+        {'number': 8, 'seats': 4},
+        {'number': 9, 'seats': 4},
+        {'number': 10, 'seats': 6},
+        {'number': 11, 'seats': 6},
+        {'number': 12, 'seats': 2},
+
     ]
     for table in tables:
         Table.objects.create(**table)
@@ -22,5 +29,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migration.RunPython(create_tables, reverse_create_tables),
+        migrations.RunPython(create_tables),
     ]

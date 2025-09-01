@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Bookings</h1>
+
+    {% if bookings %}
+        <ul>
+        {% for booking in bookings %}
+            <li>
+                {{ booking.name }} | {{ booking.date }} | {{ booking.time }} | {{ booking.guests }}
+
+                <!-- Edit Button -->
+                <a href="{% url 'edit_booking' booking.id %}">Edit</a>
+
+                <!-- Cancel Button -->
+                <form action="{% url 'cancel_booking' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="email" value="{{ booking.email }}">
+                    <input type="hidden" name="phone" value="{{ booking.phone }}">
+                    <button type="submit">Cancel</button>
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
+</body>
+</html>

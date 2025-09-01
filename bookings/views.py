@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib import messages
 from .models import Table, Booking
 from datetime import datetime, timedelta
+from django.shortcuts import get_object_or_404, redirect
+
 
 # Function to find available tables
 def available_tables(date, time, guests):
@@ -19,6 +21,36 @@ def available_tables(date, time, guests):
         if seats_needed <= 0:
             return tables_allocated
     return None
+
+    # Edit booking view
+def edit_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    # Generate 15-minute interval times from 12:00 to 22:00 (same as make_booking)
+    times = []
+    start = datetime.strptime("12:00", "%H:%M")
+    end = datetime.strptime("22:00", "%H:%M")
+    current = start
+    while current <= end:
+        times.append(current.strftime("%H:%M"))
+        current += timedelta(minutes=15)
+
+    if request.method == "POST":
+        booking.name = request.POST["name"]
+        booking.email = request.POST["email"]
+        booking.phone = request.POST["phone"]
+        booking.date = datetime.strptime(request.POST["date"], "%Y-%m-%d").date()
+        booking.time = datetime.strptime(request.POST["time"], "%H:%M").time()
+        booking.guests = int(request.POST["guests"])
+        booking.save()
+
+        messages.success(request, "✅ Booking updated successfully!")
+        return redirect("my_bookings")
+
+    return render(request, "bookings/edit_booking.html", {
+        "booking": booking,
+        "times": times
+    })
 
 # Booking form view
 def make_booking(request):
@@ -106,3 +138,7 @@ def menu(request):
 
 def contact(request):
     return render(request, 'bookings/contact.html')
+
+#  Just a return a template
+def my_bookings(request):
+    return render(request, "bookings/my_bookings.html")
