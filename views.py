@@ -62,7 +62,7 @@ def make_booking(request):
         if not free_tables.exists():
             messages.error(request, "⚠️ Sorry, no tables available for that time and party size.")
         else:
-            # Pick the first available table (or you could let user pick)
+            # Pick the first available table
             table = free_tables.first()
             booking = Booking.objects.create(
                 name=name,
