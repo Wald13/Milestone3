@@ -1,0 +1,16 @@
+<h1>My Bookings</h1>
+<a href="{% url 'make_booking' %}">➕ New Booking</a>
+
+{% if bookings %}
+<ul>
+  {% for booking in bookings %}
+    <li>
+      {{ booking.name }} | {{ booking.date }} | {{ booking.time }} | Party: {{ booking.party_size }}
+      <a href="{% url 'edit_booking' booking.pk %}">✏️ Edit</a>
+      <a href="{% url 'delete_booking' booking.pk %}">🗑️ Delete</a>
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+  <p>No bookings found.</p>
+{% endif %}

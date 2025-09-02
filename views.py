@@ -20,6 +20,11 @@ def available_tables(date, time, guests):
             return tables_allocated
     return None
 
+
+def my_bookings(request):
+    bookings = Booking.objects.all().order_by('-date', '-time')
+    return render(request, 'bookings/my_bookings.html', {'bookings': bookings})
+
 # Booking form view
 def make_booking(request):
     # Generate 15-minute interval times from 12:00 to 22:00
@@ -77,6 +82,19 @@ def make_booking(request):
             return redirect('home')
 
     return render(request, 'bookings/booking_form.html', {"times": times})
+
+
+def edit_booking(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    if request.method == 'POST':
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Booking updated successfully ✅")
+            return redirect('my_bookings')
+    else:
+        form = BookingForm(instance=booking)
+    return render(request, 'bookings/edit_booking.html', {'form': form})
 
 # Cancel booking view
 def cancel_booking(request):
