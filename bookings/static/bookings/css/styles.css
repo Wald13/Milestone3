@@ -541,41 +541,7 @@ p {
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
-/* ==========================================================================
-   Popup Notification Styles
-   ========================================================================== */
-.popup-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    z-index: 1000;
-    text-align: center;
-    max-width: 400px;
-    width: 80%;
-    animation: fadeIn 0.3s ease-out;
-}
 
-.popup-message.success { border: 2px solid #4CAF50; }
-.popup-message.error   { border: 2px solid #F44336; }
-.popup-message.info    { border: 2px solid #2196F3; }
-
-.popup-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
-    z-index: 999;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translate(-50%, -48%); }
-    to   { opacity: 1; transform: translate(-50%, -50%); }
-}
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
@@ -680,4 +646,58 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #c0392b, #a93226);
+}
+
+/* ==========================================================================
+   Modal Popup Styles (for Django messages)
+   ========================================================================== */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000; /* Above navbar */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 30px 40px;
+    border: 2px solid #888;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Success / Error / Info styling */
+.modal.success .modal-content { border-color: #27ae60; }
+.modal.error .modal-content   { border-color: #e74c3c; }
+.modal.info .modal-content    { border-color: #3498db; }
+.modal.warning .modal-content { border-color: #f39c12; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
