@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <a class="skip-link" href="#main">Skip to content</a>
     <title>{% block title %}Tēta Virtuve{% endblock %}</title>
     <meta name="description" content="Book your table at our amazing restaurant. Delicious food and great atmosphere await you.">
     
@@ -13,11 +12,9 @@
     
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'bookings/css/styles.css' %}">
-    
-    <!-- Google Fonts -->
-    <!--<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -32,35 +29,65 @@
     </nav>
 
     <!-- Main content -->
-    <div class="container">
-        {% if messages %}
-        <div class="messages">
-        {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-            {{ message }}
-            </div>
-        {% endfor %}
-        </div>
-        {% endif %}
+    <div class="container" id="main">
         {% block content %}
         {% endblock %}
     </div>
 
-    <!-- JavaScript for enhanced interactions -->
+    <!-- Modal Popup for Django messages -->
+    <div id="messageModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <p id="modal-message"></p>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
     <script>
-        // Add loading state to forms
-        document.addEventListener('DOMContentLoaded', function() {
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function(e) {
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    if (submitBtn) {
-                        submitBtn.classList.add('loading');
-                        submitBtn.textContent = 'Processing...';
-                    }
-                });
+    // Django messages as modal popup
+    document.addEventListener("DOMContentLoaded", function() {
+        {% for message in messages %}
+            showModal("{{ message|escapejs }}", "{{ message.tags }}");
+        {% endfor %}
+    });
+
+    function showModal(msg, type) {
+        const modal = document.getElementById("messageModal");
+        const messageBox = document.getElementById("modal-message");
+
+        messageBox.innerText = msg;
+
+        // Apply message type class
+        modal.className = "modal " + type;
+
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("messageModal").style.display = "none";
+    }
+
+    // Close modal if user clicks outside it
+    window.onclick = function(event) {
+        const modal = document.getElementById("messageModal");
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    // Loading state for forms
+    document.addEventListener('DOMContentLoaded', function() {
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.classList.add('loading');
+                    submitBtn.textContent = 'Processing...';
+                }
             });
         });
+    });
     </script>
 </body>
 </html>

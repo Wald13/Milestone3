@@ -541,7 +541,41 @@ p {
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
+/* ==========================================================================
+   Popup Notification Styles
+   ========================================================================== */
+.popup-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    animation: fadeIn 0.3s ease-out;
+}
 
+.popup-message.success { border: 2px solid #4CAF50; }
+.popup-message.error   { border: 2px solid #F44336; }
+.popup-message.info    { border: 2px solid #2196F3; }
+
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -48%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+}
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
