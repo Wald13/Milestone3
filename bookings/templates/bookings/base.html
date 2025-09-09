@@ -1,4 +1,4 @@
-{% load static %}
+{% load static custom_filters %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +24,13 @@
                 <li><a href="{% url 'menu' %}" class="nav-item">Menu</a></li>
                 <li><a href="{% url 'make_booking' %}" class="nav-item">Book Table</a></li>
                 <li><a href="{% url 'contact' %}" class="nav-item">Contact</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'dashboard' %}" class="nav-item">My Bookings</a></li>
+                    <li><a href="{% url 'logout' %}" class="nav-item">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="nav-item">Login</a></li>
+                    <li><a href="{% url 'register' %}" class="nav-item">Sign Up</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -34,46 +41,49 @@
         {% endblock %}
     </div>
 
-    <!-- Modal Popup for Django messages -->
-    <div id="messageModal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <p id="modal-message"></p>
-      </div>
-    </div>
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+    
+    <!-- This is the corrected usage of json_script. -->
+    <!-- It generates a complete <script> tag, so no extra tag is needed. -->
+    {{ messages|to_list|json_script:"messages-json" }}
 
     <!-- JavaScript -->
     <script>
-    //  Django messages as modal popup
-     document.addEventListener("DOMContentLoaded", function() {
-        {% for message in messages %}
-            showModal("{{ message|escapejs }}", "{{ message.tags }}");
-        {% endfor %}
-});
+    function showToast(msg, type) {
+        const toastContainer = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = `toast show ${type}`;
+        toast.innerHTML = `<span>${msg}</span><button class="close-btn">&times;</button>`;
+        
+        toastContainer.appendChild(toast);
 
-    function showModal(msg, type) {
-        const modal = document.getElementById("messageModal");
-        const messageBox = document.getElementById("modal-message");
+        // Make the toast disappear after 5 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300); // Wait for the transition to finish
+        }, 5000);
 
-        messageBox.innerText = msg;
-
-        // Apply message type class
-        modal.className = "modal " + type;
-
-        modal.style.display = "block";
+        // Allow manual closing
+        toast.querySelector('.close-btn').addEventListener('click', () => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        });
     }
 
-    function closeModal() {
-        document.getElementById("messageModal").style.display = "none";
-    }
-
-    // Close modal if user clicks outside it
-    window.onclick = function(event) {
-        const modal = document.getElementById("messageModal");
-        if (event.target == modal) {
-            closeModal();
+    document.addEventListener("DOMContentLoaded", function() {
+        const messagesElement = document.getElementById('messages-json');
+        if (messagesElement && messagesElement.textContent.trim()) {
+            try {
+                const djangoMessages = JSON.parse(messagesElement.textContent);
+                djangoMessages.forEach(message => {
+                    showToast(message.text, message.tags);
+                });
+            } catch (error) {
+                console.error("Error parsing Django messages:", error);
+            }
         }
-    }
+    });
 
     // Loading state for forms
     document.addEventListener('DOMContentLoaded', function() {
