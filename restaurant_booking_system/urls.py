@@ -9,6 +9,14 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('book/', views.make_booking, name='make_booking'),
     path('cancel/', views.cancel_booking, name='cancel_booking'),
-    path('make_bookings/', views.my_bookings, name='my_bookings'),
-    path('edit-booking/<int:booking_id>/', views.edit_booking, name='edit_booking'),
+    path('my_bookings/', views.dashboard, name='my_bookings'),
+     # Authentication URLs
+    path('login/', views.CustomLoginView.as_view(), name='login'),
+    path('register/', views.RegisterView.as_view(), name='register'),
+    path('logout/', views.custom_logout_view, name='logout'),
+    # User Dashboard URLs
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('booking/<int:booking_id>/', views.booking_detail, name='booking_detail'),
+    path('booking/<int:booking_id>/edit/', views.edit_booking, name='edit_booking'),
+    path('booking/<int:booking_id>/delete/', views.delete_booking, name='delete_booking'),
 ]

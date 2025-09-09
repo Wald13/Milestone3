@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}My Bookings - Restaurant{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ user.first_name }}!</h1>
+
+<div style="margin-bottom: 30px;">
+    <a href="{% url 'make_booking' %}" class="btn">Make New Booking</a>
+</div>
+
+<h2>Your Bookings</h2>
+
+{% if bookings %}
+    <div class="bookings-grid">
+        {% for booking in bookings %}
+            <div class="booking-card">
+                <h3>{{ booking.name }}</h3>
+                <p><strong>Date:</strong> {{ booking.date }}</p>
+                <p><strong>Time:</strong> {{ booking.time }}</p>
+                <p><strong>Guests:</strong> {{ booking.guests }}</p>
+                <p><strong>Tables:</strong> 
+                    {% for table in booking.tables.all %}
+                        Table {{ table.number }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <div class="booking-actions">
+                    <a href="{% url 'booking_detail' booking.id %}" class="btn btn-secondary">View</a>
+                    <a href="{% url 'edit_booking' booking.id %}" class="btn">Edit</a>
+                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-third">Cancel</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>You don't have any bookings yet.</p>
+    <a href="{% url 'make_booking' %}" class="btn">Make Your First Booking</a>
+{% endif %}
+{% endblock %}

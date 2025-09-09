@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Restaurant{% endblock %}
+
+{% block content %}
+<div class="background-image-booking">
+    <h1>Create Your Account</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <label for="id_username">Username:</label>
+        {{ form.username }}
+        
+        <label for="id_first_name">First Name:</label>
+        {{ form.first_name }}
+        
+        <label for="id_last_name">Last Name:</label>
+        {{ form.last_name }}
+        
+        <label for="id_email">Email:</label>
+        {{ form.email }}
+        
+        <label for="id_password1">Password:</label>
+        {{ form.password1 }}
+        
+        <label for="id_password2">Confirm Password:</label>
+        {{ form.password2 }}
+        
+        {% if form.errors %}
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+        
+        <button type="submit" class="confirm">Create Account</button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 20px;">
+        Already have an account? <a href="{% url 'login' %}">Login here</a>
+    </p>
+</div>
+{% endblock %}

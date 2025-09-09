@@ -44,12 +44,12 @@
 
     <!-- JavaScript -->
     <script>
-    // Django messages as modal popup
-    document.addEventListener("DOMContentLoaded", function() {
+    //  Django messages as modal popup
+     document.addEventListener("DOMContentLoaded", function() {
         {% for message in messages %}
             showModal("{{ message|escapejs }}", "{{ message.tags }}");
         {% endfor %}
-    });
+});
 
     function showModal(msg, type) {
         const modal = document.getElementById("messageModal");

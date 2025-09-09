@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Cancel Booking - Restaurant{% endblock %}
+
+{% block content %}
+<h1>Cancel Booking</h1>
+
+<div class="confirm-delete">
+    <p>Are you sure you want to cancel this booking?</p>
+    
+    <div class="booking-summary">
+        <h3>{{ booking.name }}</h3>
+        <p>Date: {{ booking.date }}</p>
+        <p>Time: {{ booking.time }}</p>
+        <p>Guests: {{ booking.guests }}</p>
+    </div>
+    
+    <form method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-third">Yes, Cancel Booking</button>
+    </form>
+    
+    <a href="{% url 'booking_detail' booking.id %}" class="btn btn-secondary">No, Keep Booking</a>
+</div>
+{% endblock %}

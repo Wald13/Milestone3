@@ -6,6 +6,14 @@
 <body>
     <h1>My Bookings</h1>
 
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     {% if bookings %}
         <ul>
         {% for booking in bookings %}
@@ -15,13 +23,8 @@
                 <!-- Edit Button -->
                 <a href="{% url 'edit_booking' booking.id %}">Edit</a>
 
-                <!-- Cancel Button -->
-                <form action="{% url 'cancel_booking' %}" method="post" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="email" value="{{ booking.email }}">
-                    <input type="hidden" name="phone" value="{{ booking.phone }}">
-                    <button type="submit">Cancel</button>
-                </form>
+                <!-- Cancel Button - Links to the confirmation page -->
+                <a href="{% url 'delete_booking' booking.id %}">Cancel</a>
             </li>
         {% endfor %}
         </ul>
