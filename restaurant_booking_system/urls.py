@@ -9,7 +9,6 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('book/', views.make_booking, name='make_booking'),
     path('cancel/', views.cancel_booking_unauthenticated, name='cancel_booking_unauthenticated'),
-    path('my_bookings/', views.dashboard, name='my_bookings'),
      # Authentication URLs
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('register/', views.RegisterView.as_view(), name='register'),
