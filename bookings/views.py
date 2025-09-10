@@ -8,7 +8,7 @@ from django.views.generic import CreateView
 from django.contrib.auth.models import User
 from .models import Table, Booking
 from .forms import CustomerUserCreationForm, BookingForm, BookingEditForm
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 from .utils import available_tables
 
 
@@ -127,6 +127,20 @@ def make_booking(request):
     else:
         form = BookingForm()
     
+    start_time = time(12, 0)  # 12:00 PM
+    end_time = time(22, 30)   # 10:30 PM
+    interval = timedelta(minutes=15) # 15-minute intervals
+
+    times = []
+    current_time = datetime.combine(datetime.min, start_time)
+    while current_time.time() <= end_time:
+        times.append(current_time.strftime('%H:%M'))
+        current_time += interval
+
+    context = {
+        'form': form,
+        'times': times,
+    }
     return render(request, 'bookings/booking_form.html', {'form': form})
 def custom_logout_view(request):
     logout(request)
