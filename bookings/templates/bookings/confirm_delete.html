@@ -20,6 +20,6 @@
         <button type="submit" class="btn btn-third">Yes, Cancel Booking</button>
     </form>
     
-    <a href="{% url 'booking_detail' booking.id %}" class="btn btn-secondary">No, Keep Booking</a>
+    <a href="{% url 'my_bookings' booking.id %}" class="btn btn-secondary">No, Keep Booking</a>
 </div>
 {% endblock %}

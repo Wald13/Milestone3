@@ -46,13 +46,13 @@ def dashboard(request):
     return render(request, 'bookings/dashboard.html', {'bookings': bookings})
 
 @login_required
-def booking_detail(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
-    return render(request, 'bookings/booking_detail.html', {'booking': booking})
+def my_bookings(request, booking_id):
+    booking = get_object_or_404(Booking,Q(id=booking_id, user=request.user) | Q(id=booking_id, email=request.user.email))
+    return render(request, 'bookings/my_bookings.html', {'booking': booking})
 
 @login_required
 def edit_booking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+    booking = get_object_or_404(Booking, Q(id=booking_id, user=request.user) | Q(id=booking_id, email=request.user.email))
     
     # Generate times for the form
     times = []
@@ -104,7 +104,7 @@ def edit_booking(request, booking_id):
 
 @login_required
 def delete_booking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+    booking = get_object_or_404(Booking, Q(id=booking_id, user=request.user) | Q(id=booking_id, email=request.user.email))
     
     if request.method == 'POST':
         booking_info = f"{booking.name} on {booking.date} at {booking.time}"

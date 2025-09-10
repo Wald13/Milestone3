@@ -25,7 +25,6 @@
                     {% endfor %}
                 </p>
                 <div class="booking-actions">
-                    <a href="{% url 'booking_detail' booking.id %}" class="btn btn-secondary">View</a>
                     <a href="{% url 'edit_booking' booking.id %}" class="btn">Edit</a>
                     <a href="{% url 'delete_booking' booking.id %}" class="btn btn-third">Cancel</a>
                 </div>
