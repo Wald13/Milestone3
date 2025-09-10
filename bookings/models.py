@@ -13,7 +13,7 @@ class Table(models.Model):
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings', null=True, blank=True)
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(max_length=254, null=True, blank=True)
     phone = models.CharField(max_length=15)
     date = models.DateField()
     time = models.TimeField()
