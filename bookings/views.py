@@ -124,6 +124,12 @@ def make_booking(request):
             guests = form.cleaned_data['guests']
 
             # Use the available_tables function from utils.py
+            booking_datetime = datetime.combine(booking_date, booking_time)
+
+            if booking_datetime < datetime.now():
+                messages.error(request, 'Cannot make a booking for a past date and time.')
+                return render(request, 'bookings/booking_form.html', {'form': form})
+            
             allocated = available_tables(booking_date, booking_time, guests)
             
             if not allocated:
