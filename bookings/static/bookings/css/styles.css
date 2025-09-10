@@ -796,3 +796,89 @@ html {
     font-size: 1rem;
     background: rgba(255, 255, 255, 0.9);
 }
+
+/* Specific styles for the edit booking page */
+.background-image-edit-booking {
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url("/static/bookings/Images/Barview2.jpg") center/cover;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.background-image-edit-booking .container {
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.background-image-edit-booking h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 10px;
+}
+
+.background-image-edit-booking .booking-form label {
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 15px;
+    display: block;
+}
+
+.background-image-edit-booking .booking-form input[type="text"],
+.background-image-edit-booking .booking-form input[type="email"],
+.background-image-edit-booking .booking-form input[type="tel"],
+.background-image-edit-booking .booking-form input[type="date"],
+.background-image-edit-booking .booking-form input[type="number"],
+.background-image-edit-booking .booking-form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.background-image-edit-booking .booking-form button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.background-image-edit-booking .booking-form button:hover {
+    background-color: #c0392b;
+}
+
+.background-image-edit-booking .text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.background-image-edit-booking .text-center a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.background-image-edit-booking .text-center a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+

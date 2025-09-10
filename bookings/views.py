@@ -49,6 +49,15 @@ def booking_detail(request, booking_id):
 def edit_booking(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id, user=request.user)
     
+    start_time = time(12, 0)  # 12:00 PM
+    end_time = time(22, 30)   # 10:30 PM
+    interval = timedelta(minutes=15) # 15-minute intervals
+    times = []
+    current_time = datetime.combine(datetime.min, start_time)
+    while current_time.time() <= end_time:
+        times.append(current_time.strftime('%H:%M'))
+        current_time += interval
+    
     if request.method == 'POST':
         form = BookingEditForm(request.POST, instance=booking)
         if form.is_valid():
@@ -60,7 +69,7 @@ def edit_booking(request, booking_id):
 
             if booking_datetime < datetime.now():
                 messages.error(request, 'Cannot edit booking for a past date and time.')
-                return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking})
+                return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking, 'times': times})
 
             # Check table availability (excluding current booking)
             guests = form.cleaned_data['guests']
@@ -68,7 +77,7 @@ def edit_booking(request, booking_id):
             
             if not available:
                 messages.error(request, f'No available tables for {guests} guests at {booking_time_str} on {booking_date}. Please choose another time.')
-                return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking})
+                return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking, 'times': times})
 
             # Update booking
             updated_booking = form.save()
@@ -80,7 +89,7 @@ def edit_booking(request, booking_id):
     else:
         form = BookingEditForm(instance=booking)
     
-    return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking})
+    return render(request, 'bookings/edit_booking.html', {'form': form, 'booking': booking, 'times': times})
 
 @login_required
 def delete_booking(request, booking_id):
@@ -141,7 +150,7 @@ def make_booking(request):
         'form': form,
         'times': times,
     }
-    return render(request, 'bookings/booking_form.html', {'form': form})
+    return render(request, 'bookings/booking_form.html', context)
 def custom_logout_view(request):
     logout(request)
     messages.success(request, 'You have been logged out.')
