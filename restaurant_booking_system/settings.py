@@ -61,7 +61,7 @@ ROOT_URLCONF = 'restaurant_booking_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'bookings' / 'templates'],  # Directory for templates
+        'DIRS': [],  # Directory for templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -43,9 +43,7 @@
 
     <!-- Toast Container -->
     <div id="toast-container"></div>
-    
-    <!-- This is the corrected usage of json_script. -->
-    <!-- It generates a complete <script> tag, so no extra tag is needed. -->
+    <!-- Django Messages as JSON -->
     {{ messages|to_list|json_script:"messages-json" }}
 
     <!-- JavaScript -->
