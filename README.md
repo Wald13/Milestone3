@@ -28,6 +28,24 @@ This repository contains the code for Tēta Virtuve, a restaurant booking system
 
 
 ## How to:
+### Main Page:
+<img src="{% static 'bookings/Images/Homeview.png' %}" alt="Home View">
+<img src="{% static 'bookings/Images/Menuview1.png' %}" alt="Menu View 1">
+<img src="{% static 'bookings/Images/Menuview2.png' %}" alt="Menu View 2">
+<img src="{% static 'bookings/Images/Bookingview1.png' %}" alt="Booking View 1">
+<img src="{% static 'bookings/Images/Bookingview2.png' %}" alt="Booking View 2">
+<img src="{% static 'bookings/Images/Contactview1.png' %}" alt="Contact View 1">
+<img src="{% static 'bookings/Images/Contactview2.png' %}" alt="Contact View 2">
+<img src="{% static 'bookings/Images/Loginview.png' %}" alt="Login View">
+<img src="{% static 'bookings/Images/Signupview1.png' %}" alt="Sign UP View 1">
+<img src="{% static 'bookings/Images/Signupview2.png' %}" alt="Sign UP View 2">
+<img src="{% static 'bookings/Images/Bookingview1.png' %}" alt="Bookings View 1">
+<img src="{% static 'bookings/Images/Bookignsview2.png' %}" alt="Bookings View 2">
+<img src="{% static 'bookings/Images/Editview1.png' %}" alt="Edit View 1">
+<img src="{% static 'bookings/Images/Editview2.png' %}" alt="Edit View 2">
+<img src="{% static 'bookings/Images/Cancelview.png' %}" alt="Cancel View">
+
+
 
 
 ## This project relies on the following key dependencies and credits:
