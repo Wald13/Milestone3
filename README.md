@@ -19,6 +19,7 @@ This repository contains the code for Tēta Virtuve, a restaurant booking system
 -If a client has an account and is logged in, they can go to their dashboard to manage their existing bookings. 
 #### This page lists all their reservations and provides two key options for each one:
 -Edit: By clicking the "Edit" button, the client is taken to a form where they can change the details of their reservation.
+
 -Cancel: The "Cancel" button leads to a separate confirmation page to prevent accidental cancellations. On this page, they must explicitly confirm their choice.
 #### Notifications: The system will provide feedback to the client in the form of on-screen messages, which are styled as success, error, or informational banners to confirm that an action was successful or if an issue occurred.
 
@@ -29,21 +30,30 @@ This repository contains the code for Tēta Virtuve, a restaurant booking system
 
 ## How to:
 ### Main Page:
-<img src="{% static 'bookings/Images/Homeview.png' %}" alt="Home View">
-<img src="{% static 'bookings/Images/Menuview1.png' %}" alt="Menu View 1">
-<img src="{% static 'bookings/Images/Menuview2.png' %}" alt="Menu View 2">
-<img src="{% static 'bookings/Images/Bookingview1.png' %}" alt="Booking View 1">
-<img src="{% static 'bookings/Images/Bookingview2.png' %}" alt="Booking View 2">
-<img src="{% static 'bookings/Images/Contactview1.png' %}" alt="Contact View 1">
-<img src="{% static 'bookings/Images/Contactview2.png' %}" alt="Contact View 2">
-<img src="{% static 'bookings/Images/Loginview.png' %}" alt="Login View">
-<img src="{% static 'bookings/Images/Signupview1.png' %}" alt="Sign UP View 1">
-<img src="{% static 'bookings/Images/Signupview2.png' %}" alt="Sign UP View 2">
-<img src="{% static 'bookings/Images/Bookingview1.png' %}" alt="Bookings View 1">
-<img src="{% static 'bookings/Images/Bookignsview2.png' %}" alt="Bookings View 2">
-<img src="{% static 'bookings/Images/Editview1.png' %}" alt="Edit View 1">
-<img src="{% static 'bookings/Images/Editview2.png' %}" alt="Edit View 2">
-<img src="{% static 'bookings/Images/Cancelview.png' %}" alt="Cancel View">
+![alt text](bookings/static/bookings/Images/Homeview.png)
+### Menu Page:
+![alt text](bookings/static/bookings/Images/Menuview1.png)
+![alt text](bookings/static/bookings/Images/Menuview2.png)
+### Table Booking Page:
+![alt text](bookings/static/bookings/Images/Bookingview1.png)
+![alt text](bookings/static/bookings/Images/Bookingview2.png)
+### Contact Page:
+![alt text](bookings/static/bookings/Images/Contactview1.png)
+![alt text](bookings/static/bookings/Images/Contactview2.png)
+### Login Page:
+![alt text](bookings/static/bookings/Images/Login.htmlcheck.png)
+### Sign Up Page:
+![alt text](bookings/static/bookings/Images/Signupview1.png)
+![alt text](bookings/static/bookings/Images/Signupview2.png)
+### Bookings Management Page:
+![alt text](bookings/static/bookings/Images/Bookingsview2.png)
+![alt text](bookings/static/bookings/Images/Bookingsview2.png)
+### Edit Page:
+![alt text](bookings/static/bookings/Images/Editview1.png)
+![alt text](bookings/static/bookings/Images/Editview2.png)
+![alt text](bookings/static/bookings/Images/Editview3.png)
+### Cancel Page:
+![alt text](bookings/static/bookings/Images/Cancelview.png)
 
 
 
