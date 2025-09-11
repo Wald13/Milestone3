@@ -74,7 +74,7 @@ Django Documentation: A primary source for learning and implementing the framewo
 
 ## Bug, problems and solutions:
 ### False Positive: VS Code "Expression Expected" Error
-Problem: VS Code shows an "Expression expected" linting error inside "<script>" "tags when Django template tags like {% for %} or {{ }} are used."
+Problem: VS Code shows an "Expression expected" linting error inside scrip tag.
 Cause: This is a false positive because the linter is designed for pure JavaScript and does not recognize Django's templating syntax. It is not a bug in the code itself, and the application will run correctly.
 Resolution: To resolve this in your local development environment, you need to configure VS Code to recognize Django templates. This can be done by adding a files.associations entry to your settings.json file. This tells the editor to treat .html files in specific directories as django-html, which will suppress these warnings.
 
