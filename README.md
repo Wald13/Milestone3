@@ -166,3 +166,15 @@ Login Page:
 
 Full CSS Check:
 ![alt text](bookings/static/bookings/Images/CSScheck.png)
+
+## Speed Validator:
+### Main Page:
+https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com/rnselgrrkx?form_factor=desktop
+
+![alt text](bookings/static/bookings/Images/Speedperformance1.png) 
+![alt text](bookings/static/bookings/Images/Speedperformance2.png) 
+![alt text](bookings/static/bookings/Images/Speedperformance3.png) 
+![alt text](bookings/static/bookings/Images/Speedperformance4.png) 
+![alt text](bookings/static/bookings/Images/Speedperformance5.png) 
+![alt text](bookings/static/bookings/Images/Speedperformance6.png) 
+![alt text](bookings/static/bookings/Images/Speedperformance7.png)
