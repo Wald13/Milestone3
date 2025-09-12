@@ -24,27 +24,41 @@ This repository contains the code for Tēta Virtuve, a restaurant booking system
 #### Notifications: The system will provide feedback to the client in the form of on-screen messages, which are styled as success, error, or informational banners to confirm that an action was successful or if an issue occurred.
 
 ## How to:
-To navegate in this website, the user as many ways to do it so.
+#### Main Navigation
+The website provides multiple ways for users to navigate its content, ensuring a seamless experience for both logged-in and guest users.
 
--Where is the name of the "restaurant" -Tēta Virtuve- in any page the user is located, always will came back to the main page of the website.
+-Tēta Virtuve (Logo): Clicking the restaurant's logo from any page will always take the user back to the main homepage.
 
--The Home button, as the name says, will bring the user back to the main page.
+-Home: This button serves the same function as the logo, returning the user to the website's main page.
 
--The Menu button is where the user can see the menu of the restaurant as the specials of the day/week/month.
+-Menu: Users can view the restaurant's full menu, including daily specials and featured dishes.
 
--Book Table button, is where a user without login can make a reservation (to see the reservation the user needs to register to have access to the bookings view).
+-Book Table: This button allows both logged-in users and guests to make a reservation.
 
--The contact button, the user can send a message to the restaurant.
+-Contact: Users can send a direct message to the restaurant.
 
--The Sign Up button, the user will create an account where the user need to insert a "username", "first & last name", "email" and a "password", with a password confirmation.
+#### Authentication
+-Sign Up: Users can create a new account by providing a username, email, first and last name, and a password with confirmation.
 
--The bogin button is where the user will login in the booking system, needing the user's "username" & "password" 
+-Login: This button directs existing users to the login page where they can access their account with their username and password.
 
--In the middle of the page the user can find 3 other buttons, "MAke a Booking", "See Menu" and "Cancel Booking", more focus for users that do not want to login.
+#### Homepage Buttons
+In the middle of the homepage, three prominent buttons are available for quick access, primarily for users who do not wish to log in.
 
--Once the user logs in, the dashboard page will show up, where the user can see thr bookings made and where the user can edit that bookings or cancel them.
+-Make a Booking: Directs users to the booking form.
 
-# Wireframes:
+-See Menu: A secondary link to the restaurant's menu page.
+
+-Cancel Booking: Allows users to cancel a booking made without an account.
+
+#### The Dashboard
+Once a user logs in, they are redirected to their personal Dashboard. This page is the central hub for managing bookings.
+
+-View Bookings: Users can see a list of all their reservations.
+
+-Edit Bookings: Users can modify an existing booking.
+
+-Cancel Bookings: Users have the option to cancel a reservation.
 
 ### Main Page:
 ![alt text](bookings/static/bookings/Images/Homeview.png)
