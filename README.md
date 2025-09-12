@@ -169,7 +169,7 @@ Full CSS Check:
 
 ## Speed Validator:
 ### Main Page:
-https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com/rnselgrrkx?form_factor=desktop
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com/rnselgrrkx?form_factor=desktop]
 
 ![alt text](bookings/static/bookings/Images/Speedperformance1.png) 
 ![alt text](bookings/static/bookings/Images/Speedperformance2.png) 
@@ -178,3 +178,27 @@ https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com/r
 ![alt text](bookings/static/bookings/Images/Speedperformance5.png) 
 ![alt text](bookings/static/bookings/Images/Speedperformance6.png) 
 ![alt text](bookings/static/bookings/Images/Speedperformance7.png)
+
+### Menu Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-menu/fhi1y96qtf?form_factor=desktop]
+
+### Book a Table Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-book/zit4r9gfhk?form_factor=desktop]
+
+### Contact Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-contact/2lyjxmg5ft?form_factor=desktop]
+
+### Sign Up Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-register/6ln2x8r0u0?form_factor=desktop]
+
+### Login Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-login/cf5qe7mho7?form_factor=desktop]
+
+### Dashboard Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-dashboard/vuva0xab12?form_factor=desktop]
+
+### Edit Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-booking-7-edit/qm9r48bue1?form_factor=desktop]
+
+### Cancel Page:
+[https://pagespeed.web.dev/analysis/https-milestone3-d43afd666373-herokuapp-com-booking-7-delete/hqouvy4ln1?form_factor=desktop]
