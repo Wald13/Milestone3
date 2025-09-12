@@ -107,9 +107,13 @@ As I have been testing most aspects as I write the code for the site, I am hopin
 
 ### Testing as a user for navigation purposes:
 -Tested all links and buttons to ensure they lead to the correct pages.
+
 -Successfully performed user sign-in and sign-out.
+
 -Validated the booking process by creating a new booking, including testing with different times and dates.
+
 -Confirmed the booking validation for invalid inputs, such as past dates, which correctly displayed an error message.
+
 -Verified the ability to view, edit, and cancel existing bookings from the user dashboard.
 
 ### Testing with validators:
@@ -138,7 +142,7 @@ Resolution: Added <meta name="robots" content="index,follow"> to the <head> sect
 
 ### Vendor-extended Pseudo-elements:
 During CSS validation, warnings may appear for vendor-extended pseudo-elements. These are browser-specific CSS selectors, often prefixed with -webkit- (for Chrome and Safari), that are not yet part of the official W3C standard. We have chosen to include these to ensure consistent styling, particularly for elements like scrollbars, across different browsers. These are not errors and do not impact functionality.
-
+![alt text](bookings/static/bookings/Images/CSScheckwarnings.png)
 
 #### W3C HTML Validator:
 
@@ -159,3 +163,6 @@ Sing Up Page:
 
 Login Page:
 ![alt text](bookings/static/bookings/Images/Login.htmlcheck.png)
+
+Full CSS Check:
+![alt text](bookings/static/bookings/Images/CSScheck.png)
