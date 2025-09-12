@@ -40,6 +40,9 @@ To navegate in this website, the user as many ways to do it so.
 
 -The bogin button is where the user will login in the booking system, needing the user's "username" & "password" 
 
+-In the middle of the page the user can find 3 other buttons, "MAke a Booking", "See Menu" and "Cancel Booking", more focus for users that do not want to login.
+
+-Once the user logs in, the dashboard page will show up, where the user can see thr bookings made and where the user can edit that bookings or cancel them.
 
 # Wireframes:
 
