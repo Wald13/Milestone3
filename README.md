@@ -113,7 +113,9 @@ Resolution: To resolve this in your local development environment, you need to c
 
 ## Source for images and text:
 All images below have been compressed using Canvas.com to help with load speed on the website.
+
 All images were taken by me for the single porpose of this project.
+
 The text "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" is a base font from the system, by choosing Segoe UI, I've prioritized speed and reliability, as it's a font that's already available on most modern computers.
 
 
@@ -129,12 +131,12 @@ To do the above you may need to follow these steps also:
 2. Click on the "Code" icon'.
 3. Select "GitHub CLI".
 4. Copy the CLI "gh repo clone (Name of the project).
-5. Past it in or vscode terminal.
+5. Paste it in vscode terminal.
 6. Use "pip install -r requirements.txt" to install the packages required.
 
 ## Testing:
 
-As I have been testing most aspects as I write the code for the site, I am hoping this is not going to be too much.
+I have been testing most aspects as I write the code for the site.
 
 ### Testing as a user for navigation purposes:
 -Tested all links and buttons to ensure they lead to the correct pages.
