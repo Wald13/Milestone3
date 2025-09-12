@@ -41,12 +41,12 @@ This repository contains the code for Tēta Virtuve, a restaurant booking system
 ![alt text](bookings/static/bookings/Images/Contactview1.png)
 ![alt text](bookings/static/bookings/Images/Contactview2.png)
 ### Login Page:
-![alt text](bookings/static/bookings/Images/Login.htmlcheck.png)
+![alt text](bookings/static/bookings/Images/Loginview.png)
 ### Sign Up Page:
 ![alt text](bookings/static/bookings/Images/Signupview1.png)
 ![alt text](bookings/static/bookings/Images/Signupview2.png)
 ### Bookings Management Page:
-![alt text](bookings/static/bookings/Images/Bookingsview2.png)
+![alt text](bookings/static/bookings/Images/Bookingsview1.png)
 ![alt text](bookings/static/bookings/Images/Bookingsview2.png)
 ### Edit Page:
 ![alt text](bookings/static/bookings/Images/Editview1.png)
@@ -138,3 +138,24 @@ Resolution: Added <meta name="robots" content="index,follow"> to the <head> sect
 
 ### Vendor-extended Pseudo-elements:
 During CSS validation, warnings may appear for vendor-extended pseudo-elements. These are browser-specific CSS selectors, often prefixed with -webkit- (for Chrome and Safari), that are not yet part of the official W3C standard. We have chosen to include these to ensure consistent styling, particularly for elements like scrollbars, across different browsers. These are not errors and do not impact functionality.
+
+
+#### W3C HTML Validator:
+
+Main Page:
+![alt text](bookings/static/bookings/Images/Base.htmlcheck.png)
+
+Menu Page:
+![alt text](bookings/static/bookings/Images/Menu.htmlcheck.png)
+
+Book a table Page:
+![alt text](bookings/static/bookings/Images/Booking.htmlcheck.png)
+
+Contact Page:
+![alt text](bookings/static/bookings/Images/Contact.htmcheck.png)
+
+Sing Up Page:
+![alt text](bookings/static/bookings/Images/Signup.htmlcheck.png)
+
+Login Page:
+![alt text](bookings/static/bookings/Images/Login.htmlcheck.png)
