@@ -23,12 +23,26 @@ This repository contains the code for Tēta Virtuve, a restaurant booking system
 -Cancel: The "Cancel" button leads to a separate confirmation page to prevent accidental cancellations. On this page, they must explicitly confirm their choice.
 #### Notifications: The system will provide feedback to the client in the form of on-screen messages, which are styled as success, error, or informational banners to confirm that an action was successful or if an issue occurred.
 
-
-## Wireframes:
-
-
-
 ## How to:
+To navegate in this website, the user as many ways to do it so.
+
+-Where is the name of the "restaurant" -Tēta Virtuve- in any page the user is located, always will came back to the main page of the website.
+
+-The Home button, as the name says, will bring the user back to the main page.
+
+-The Menu button is where the user can see the menu of the restaurant as the specials of the day/week/month.
+
+-Book Table button, is where a user without login can make a reservation (to see the reservation the user needs to register to have access to the bookings view).
+
+-The contact button, the user can send a message to the restaurant.
+
+-The Sign Up button, the user will create an account where the user need to insert a "username", "first & last name", "email" and a "password", with a password confirmation.
+
+-The bogin button is where the user will login in the booking system, needing the user's "username" & "password" 
+
+
+# Wireframes:
+
 ### Main Page:
 ![alt text](bookings/static/bookings/Images/Homeview.png)
 ### Menu Page:
