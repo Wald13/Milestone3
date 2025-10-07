@@ -14,6 +14,10 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 
 import os
+import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from a .env file if present
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@vw@jilt(5gnn-ukqkb!+29d=rifq-$qb=uoefbi*f&ett=4^i'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'default-insecure-fallback-key-for-local-development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -92,14 +96,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',  
-       # 'NAME': 'restaurant_db',
-       # 'USER': 'wald',       #  PostgreSQL username
-       # 'PASSWORD': '13wald73', #  PostgreSQL password
-       # 'HOST': 'localhost',
-       # 'PORT': '5432',
     }
 }
-
+if os.environ.get('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600, ssl_require=True
+    )
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -139,6 +141,16 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
