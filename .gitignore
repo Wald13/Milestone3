@@ -1,0 +1,18 @@
+# Django / Python
+*.pyc
+__pycache__/
+venv/
+env/
+.env
+.python--version
+pip-log.txt
+.pytest_cache/
+..mypy_cache/
+.vscode/
+db.sqlite3
+staticfiles/
+media/
+media_root/
+.DS_Store
+Thumbs.db
+*.log
