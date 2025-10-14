@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', # For Django static files management
-    'django_extensions', # For additional management commands
     'bookings',  # App for restaurant bookings
     ]
 
