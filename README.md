@@ -109,7 +109,7 @@ Problem: VS Code shows an "Expression expected" linting error inside scrip tag.
 Cause: This is a false positive because the linter is designed for pure JavaScript and does not recognize Django's templating syntax. It is not a bug in the code itself, and the application will run correctly.
 Resolution: To resolve this in your local development environment, you need to configure VS Code to recognize Django templates. This can be done by adding a files.associations entry to your settings.json file. This tells the editor to treat .html files in specific directories as django-html, which will suppress these warnings.
 
-
+On my new attempt of project submission i've encounter a more variety of error regarding safegard HTTPS/HTTP.
 
 ## Source for images and text:
 All images below have been compressed using Canvas.com to help with load speed on the website.

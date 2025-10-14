@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'default-insecure-fallback-key-for-local-development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
         'milestone3-d43afd666373.herokuapp.com', '127.0.0.1', 'localhost',
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', # For Django static files management
+    'django_extensions', # For additional management commands
     'bookings',  # App for restaurant bookings
     ]
 
