@@ -109,7 +109,38 @@ Problem: VS Code shows an "Expression expected" linting error inside scrip tag.
 Cause: This is a false positive because the linter is designed for pure JavaScript and does not recognize Django's templating syntax. It is not a bug in the code itself, and the application will run correctly.
 Resolution: To resolve this in your local development environment, you need to configure VS Code to recognize Django templates. This can be done by adding a files.associations entry to your settings.json file. This tells the editor to treat .html files in specific directories as django-html, which will suppress these warnings.
 
-On my new attempt of project submission i've encounter a more variety of error regarding safegard HTTPS/HTTP.
+I can certainly summarize the series of errors we've been tackling in your project, which primarily stem from Python 3.12 compatibility issues and the complexities of serving secure (HTTPS) content both locally and on Heroku.
+
+Here is an extended breakdown of the critical errors and issues we encountered:
+
+Summary of Project Errors and Resolutions
+The core of our recent debugging session involved moving away from a conflicting setup to a robust, compatible solution. This required fixing a chain of dependency, command syntax, and deployment authentication issues.
+
+1. Local HTTPS/Compatibility Errors
+The initial problem and its direct consequence were rooted in an outdated package used for local HTTPS development:
+
+Error Type	Issue Encountered	Root Cause
+Initial SSL Error	AttributeError: module 'ssl' has no attribute 'wrap_socket'	The django-sslserver package was incompatible with Python 3.12, as Python 3.12 removed the legacy ssl.wrap_socket() function.
+Deployment Dependency	ModuleNotFoundError: No module named 'dj_database_url'	Required packages were missing because django-sslserver wasn't included in requirements.txt, leading to an incomplete install after environment changes.
+Command Misconfiguration	KeyError: 'runsslserver' and ModuleNotFoundError: No module named 'django.extensions'	Missing entry in INSTALLED_APPS for both sslserver and its replacement, django_extensions.
+Final Local Fix	CommandError: "https" is not a valid port number... and CommandError: Werkzeug is required...	Incorrect command line syntax for runserver_plus and the missing Werkzeug library, which is a required dependency for the enhanced command.
+
+Export to Sheets
+Resolution: We abandoned the incompatible django-sslserver and switched to django-extensions, resolving all local HTTPS issues using the correct command: python manage.py runserver_plus --cert cert.pem.
+
+2. Heroku Deployment and Authentication Errors
+Once the local environment was stable, we faced significant obstacles connecting to and deploying on Heroku:
+
+Error Type	Issue Encountered	Root Cause
+CLI Path Error	bash: heroku: command not found	The Heroku CLI was not installed or its location was not added to the system's PATH variable (exacerbated by a 1024-character PATH limit on Windows, requiring a session-level workaround).
+Git Remote Error	fatal: 'heroku' does not appear to be a git repository	The local Git repository had not been linked to the Heroku application, meaning the heroku remote did not exist.
+App Naming Error	Error: Couldn't find that app.	A mismatch between the app name used in the command (milestone3-d43afd666373) and the app's actual Git remote name (milestone3).
+Authentication Failure	VS Code asking for credentials for https://git.heroku.com	Git could not automatically fetch credentials, requiring manual entry of the Heroku account email (as the username) and a generated Heroku API Key (as the password/token).
+Deployment Rejection	! Push rejected to milestone3. (pre-receive hook declined)	The commit being pushed had an identical SHA to the previous, failed deployment, forcing us to create a new "dummy" commit to get a unique identifier.
+
+Export to Sheets
+Resolution: We manually set the Heroku CLI path, fixed the Git remote name to https://git.heroku.com/milestone3.git, authenticated using the Heroku API Key, and created a new commit, finally allowing the code to be pushed to the server.
+
 
 ## Source for images and text:
 All images below have been compressed using Canvas.com to help with load speed on the website.
