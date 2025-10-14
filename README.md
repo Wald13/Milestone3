@@ -134,6 +134,57 @@ To do the above you may need to follow these steps also:
 5. Paste it in vscode terminal.
 6. Use "pip install -r requirements.txt" to install the packages required.
 
+### 2. Heroku Deployment (Back-End)
+
+1. Log into your [Heroku Dashboard](https://dashboard.heroku.com/apps).
+2. Click **New → Create new app**.
+3. Enter a unique app name and select your region.
+4. Click **Create app**.
+
+#### Database Setup
+
+5. Go to the **Resources** tab.
+6. In the **Add-ons** search bar, find **Heroku Postgres** and select it.
+7. Choose the plan **Essential-0** and submit.
+
+#### Configuring Environment Variables
+
+8. Navigate to the **Settings** tab → **Reveal Config Vars**.
+9. Copy the `DATABASE_URL` provided.
+10. In your local project (GitPod or IDE), create a new `env.py` file in the top-level directory.
+11. Inside `env.py`, add:
+
+```python
+import os
+os.environ["DATABASE_URL"] = "Paste Heroku DATABASE_URL here"
+os.environ["SECRET_KEY"] = "yourRandomSecretKey"
+```
+
+12. Back in Heroku, add the same `SECRET_KEY` in **Config Vars**.
+
+### Django Settings Update
+
+13. In `settings.py`:
+
+* Replace the hardcoded secret with:
+
+  ```python
+  SECRET_KEY = os.environ.get("SECRET_KEY")
+  ```
+* Update the database config:
+
+  ```python
+  DATABASES = {
+      'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+  }
+  ```
+
+14. Save all files, then run migrations:
+
+```bash
+python manage.py migrate
+```
+
 ## Testing:
 
 I have been testing most aspects as I write the code for the site.
